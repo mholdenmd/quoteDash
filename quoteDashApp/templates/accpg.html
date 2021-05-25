@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit My Account</h1>
+    <ul>
+        {% if messages %}
+        {% for message in messages %}    
+            <p style="color: red;">{{message}}</p> 
+        {% endfor %}
+    
+        {% endif %}
+    </ul>
+    <form action="/quotes/{{allusers.id}}/update" method="post">
+    {% csrf_token %}
+    
+        <p>First Name:<input type="text" name="fname" value="{{allusers.first_name}}"></p>
+        <p>Last Name:<input type="text" name="lname" value="{{allusers.last_name}}"></p>
+        <p>Email:<input type="text" name="Email" value="{{allusers.email}}"></p>
+        
+        <input type="submit" value="submit">
+        
+    </form>
+    
+    <a href="/quotes">Go Back to Show List</a>
+    <a href="/logout"><button>Log out</button></a>
+</body>
+</html>
